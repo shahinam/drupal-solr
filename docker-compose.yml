@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  solr:
+    image: solr:6
+    ports:
+     - "8983:8983"
+    volumes:
+      - data:/opt/solr/server/solr/drupal:delegated
+      - ./conf:/solr-conf/conf
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - drupal
+volumes:
+  data:
